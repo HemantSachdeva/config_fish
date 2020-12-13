@@ -18,3 +18,4 @@ alias glog='git log'
 alias pick='git cherry-pick'
 alias fpush='git push -f'
 alias cont='git rebase --continue'
+set -x PATH /home/hemant/flutter-sdk/flutter/bin:$PATH
