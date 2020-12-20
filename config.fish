@@ -133,7 +133,8 @@ alias cont='git rebase --continue'
 
 ## Run neofetch if session is interactive
 if status --is-interactive
-   neofetch
+   #neofetch
+   ufetch | lolcat
 end
 set -x PATH /home/hemant/flutter-sdk/flutter/bin:$PATH 
 set -x PATH /opt/gradle/gradle-6.7.1/bin:$PATH
