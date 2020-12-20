@@ -15,9 +15,9 @@ function fish_prompt
   if not set -q __fish_prompt_char
     switch (id -u)
       case 0
-	set -g __fish_prompt_char '#'
+	set -g __fish_prompt_char '💀'
       case '*'
-	set -g __fish_prompt_char 'λ'
+	set -g __fish_prompt_char '🦄'
     end
   end
 
@@ -94,8 +94,7 @@ function copy
 end
 
 ## Useful aliases
-alias ls='exa -al --color=always --group-directories-first' # preferred listing
-alias la='exa -a --color=always --group-directories-first'  # all files and dirs
+alias la='ls -a --color=always --group-directories-first'  # all files and dirs
 alias ls='exa -l --color=always --group-directories-first'  # long format
 alias lt='exa -aT --color=always --group-directories-first' # tree listing
 
@@ -113,6 +112,24 @@ alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+
+alias c='clear'
+alias e='exit'
+alias cd.='cd ..'
+alias cd..='cd ../../'
+alias cd...='cd ../../../'
+alias cd....='cd ../../../../'
+alias rm='rm -rf'
+alias cp='cp -r'
+alias gits='git status'
+alias push='git push'
+alias commit='git commit -s -m'
+alias add='git add'
+alias branch='git branch'
+alias glog='git log'
+alias pick='git cherry-pick'
+alias fpush='git push -f'
+alias cont='git rebase --continue' 
 
 ## Run neofetch if session is interactive
 if status --is-interactive
