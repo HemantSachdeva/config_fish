@@ -10,7 +10,7 @@ function fish_prompt
 
   # Just calculate these once, to save a few cycles when displaying the prompt
   if not set -q __fish_prompt_hostname
-    set -g __fish_prompt_hostname (hostname|cut -d . -f 1)
+    set -g __fish_prompt_hostname DoomsDay
   end
   if not set -q __fish_prompt_char
     switch (id -u)
@@ -56,12 +56,17 @@ function fish_prompt
   set -g __fish_git_prompt_showstashstate true
   set -g __fish_git_prompt_show_informative_status true 
 
-  set -l current_user (whoami)
+  set -l current_user Hemant
 
   # Line 1
-  echo -n $white'╭─'$hotpink$current_user$white' at '$orange$__fish_prompt_hostname$white' in '$limegreen(pwd|sed "s=$HOME=⌁=")$turquoise
-  __fish_git_prompt " (%s)"
-  echo
+  if test -d .git/
+    echo -n $white'╭─'$hotpink$current_user$white' at '$orange$__fish_prompt_hostname$white' in'$limegreen repo: (basename (git remote get-url origin))$turquoise
+    __fish_git_prompt " (%s)"
+    echo
+  else
+    echo -n $white'╭─'$hotpink$current_user$white' at '$orange$__fish_prompt_hostname$white' in '$limegreen(pwd|sed "s=$HOME=⌁=")$turquoise
+    echo
+  end
 
   # Line 2
   echo -n $white'╰'
@@ -136,7 +141,5 @@ if status --is-interactive
    #neofetch
    ufetch | lolcat
 end
-set -x PATH /home/hemant/flutter-sdk/flutter/bin:$PATH 
-set -x PATH /opt/gradle/gradle-6.7.1/bin:$PATH
 set -x PATH /home/hemant/.local/bin:$PATH
 set -gx GPG_TTY (tty)
